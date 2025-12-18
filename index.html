@@ -57,6 +57,11 @@
     .layout { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
     header {
       background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 11, 11, 0.82);
       border-bottom: 1px solid var(--border);
     }
     .nav {
@@ -73,6 +78,7 @@
       color: var(--text-color);
       text-transform: uppercase;
       letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       font-weight: 700;
       font-size: 14px;
     }
@@ -93,6 +99,7 @@
     }
     .nav .cta {
       background: var(--accent-red);
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
       color: #fff;
       padding: 10px 16px;
       border-radius: var(--button-radius);
@@ -105,6 +112,14 @@
       position: relative;
       background: var(--surface);
       border-bottom: 1px solid var(--border);
+      border: 0;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
     }
     .hero-grid {
       display: grid;
@@ -125,6 +140,14 @@
       text-transform: uppercase;
       font-size: 12px;
       border: 1px solid #d5e2ff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(0, 87, 255, 0.12);
+      color: var(--accent-blue);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 12px;
     }
     h1 {
       font-size: clamp(32px, 4vw, 48px);
@@ -139,6 +162,7 @@
       border-radius: var(--button-radius);
       border: 1px solid var(--border);
       background: #ffffff;
+      background: #0f0f0f;
       color: var(--text-color);
       font-weight: 700;
       display: inline-flex;
@@ -150,6 +174,12 @@
     .btn.primary { background: var(--accent-red); color: #fff; border-color: var(--accent-red); }
     .btn.secondary { border-color: var(--accent-blue); color: var(--accent-blue); background: #f5f8ff; }
     .btn:hover, .btn:focus-visible { outline: 2px solid var(--accent-blue); }
+      transition: 0.2s ease;
+      text-align: center;
+    }
+    .btn.primary { background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); border: 0; box-shadow: var(--shadow); }
+    .btn.secondary { border-color: var(--accent-blue); }
+    .btn:hover, .btn:focus-visible { transform: translateY(-2px); outline: none; }
 
     .badges {
       display: flex;
@@ -172,6 +202,18 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow);
     }
 
     .section { padding: 70px 0; }
@@ -190,6 +232,12 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
+    .vehicle-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+    .card {
+      background: var(--card-color);
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 18px;
       display: flex;
       flex-direction: column;
@@ -197,6 +245,22 @@
     }
     .card h3 { margin: 0; font-size: 20px; }
     .card p { margin: 0; color: var(--muted); }
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 87, 255, 0.16), rgba(212, 0, 0, 0.16));
+      opacity: 0;
+      transition: 0.2s ease;
+    }
+    .card:hover::before { opacity: 1; }
+    .card-content { position: relative; z-index: 1; }
+    .card h3 { margin: 0; font-size: 20px; }
+    .card p { margin: 0; color: var(--muted); }
+    .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.06); font-size: 13px; font-weight: 700; }
 
     .vehicle-thumb {
       width: 100%;
@@ -207,6 +271,12 @@
       display: grid;
       place-items: center;
       color: #555;
+      background: linear-gradient(135deg, rgba(0, 87, 255, 0.3), rgba(212, 0, 0, 0.3)),
+                  linear-gradient(135deg, #111, #1a1a1a);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--text-color);
       font-weight: 700;
       letter-spacing: 0.04em;
     }
@@ -221,6 +291,10 @@
     .contact-list li { padding: 6px 0; border-bottom: 1px solid var(--border); }
     .contact-list li:last-child { border-bottom: 0; }
     .contact-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .price { font-weight: 800; font-size: 18px; color: var(--text-color); }
+
+    .contact-grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+    .contact-grid .panel { height: 100%; }
     form { display: grid; gap: 12px; }
     label { font-weight: 700; font-size: 14px; }
     input, textarea {
@@ -229,6 +303,7 @@
       border-radius: 12px;
       border: 1px solid var(--border);
       background: #fff;
+      background: #0f0f0f;
       color: var(--text-color);
       font-size: 15px;
     }
@@ -240,6 +315,7 @@
     .notice { font-size: 14px; color: var(--muted); margin-top: 8px; }
     .footer {
       background: var(--surface);
+      background: #090909;
       border-top: 1px solid var(--border);
       padding: 26px 0;
       color: var(--muted);
@@ -256,6 +332,9 @@
       width: min(100% - 24px, 520px);
       background: var(--surface);
       border: 1px solid var(--border);
+      background: #111;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
       border-radius: 14px;
       padding: 14px 16px;
       display: none;
@@ -331,6 +410,29 @@
           <div class="contact-actions">
             <a class="btn primary" href="https://wa.me/491776170766" target="_blank" rel="noopener">WhatsApp öffnen</a>
             <a class="btn secondary" href="#kontakt">Zum Kontaktformular</a>
+          <p class="subtitle">Ihr Autohaus in Mannheim – fair, transparent, zuverlässig. Persönliche Beratung, geprüfte Fahrzeuge und schnelle Abwicklung.</p>
+          <div class="hero-ctas">
+            <a class="btn primary" href="https://wa.me/491776170766?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Fahrzeug" target="_blank" rel="noopener">Per WhatsApp anfragen</a>
+            <a class="btn secondary" href="https://home.mobile.de/ACAUTOHANDELMANNHEIM#ses" target="_blank" rel="noopener">Fahrzeuge ansehen</a>
+          </div>
+          <div class="badges">
+            <div class="badge">Columbusstraße 101, 68309 Mannheim</div>
+            <div class="badge">+49 177 6170766</div>
+          </div>
+        </div>
+        <div class="panel" aria-label="Trust Highlights">
+          <div class="chip">Schnelle Antwort & persönliche Betreuung</div>
+          <div class="card" style="margin-top:12px;">
+            <div class="card-content">
+              <h3>Transparenz in jedem Schritt</h3>
+              <p>Klare Angebote, nachvollziehbare Historie und schriftliche Zusagen für Ihren sicheren Fahrzeugkauf oder -verkauf.</p>
+            </div>
+          </div>
+          <div class="card" style="margin-top:12px;">
+            <div class="card-content">
+              <h3>Probefahrt & Übergabe</h3>
+              <p>Flexible Termine, sorgfältige Fahrzeugaufbereitung und persönliche Einweisung bei der Fahrzeugübergabe.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -353,6 +455,17 @@
             <div class="card"><div class="card-content"><h3>Geprüfte Fahrzeuge</h3><p>Aktuelle HU/AU, gepflegte Historie und Probefahrt nach Vereinbarung.</p></div></div>
             <div class="card"><div class="card-content"><h3>Verlässliche Abwicklung</h3><p>Strukturierte Prozesse vom Ankauf bis zur Übergabe.</p></div></div>
           </div>
+    <section class="section" id="usps" aria-labelledby="usps-heading">
+      <div class="layout">
+        <h2 id="usps-heading">Warum ACAUTOHANDELMANNHEIM?</h2>
+        <p class="section-intro">Verlässliche Prozesse, geprüfte Fahrzeuge und ein Team, das Wert auf Klarheit legt.</p>
+        <div class="grid usp-grid">
+          <div class="card"><div class="card-content"><h3>Faire & transparente Preise</h3><p>Marktgerechte Bewertungen und nachvollziehbare Angebote.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Geprüfte Fahrzeuge</h3><p>Sorgfältige Checks, aktuelle HU/AU und gepflegte Historie.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Schnelle Abwicklung</h3><p>Digitale Unterlagen, kurze Entscheidungswege und zügige Übergaben.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Persönliche Beratung</h3><p>Direkter Ansprechpartner für Verkauf, Ankauf und Finanzierung.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Ankauf & Inzahlungnahme</h3><p>Fahrzeuge unkompliziert verkaufen oder anrechnen lassen.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Regionale Verankerung</h3><p>Mannheimer Autohaus mit kurzen Wegen und Verlässlichkeit.</p></div></div>
         </div>
       </div>
     </section>
@@ -366,6 +479,12 @@
           <div class="card"><div class="card-content"><h3>Fahrzeugankauf</h3><p>Faire Bewertung Ihres Fahrzeugs und zügige Angebotserstellung.</p></div></div>
           <div class="card"><div class="card-content"><h3>Inzahlungnahme</h3><p>Ihr jetziges Fahrzeug wird auf den Kaufpreis angerechnet – transparent und nachvollziehbar.</p></div></div>
           <div class="card"><div class="card-content"><h3>Finanzierung & Beratung</h3><p>Persönliche Beratung zu Laufzeiten, Raten und Partnerbanken.</p></div></div>
+        <p class="section-intro">Alles aus einer Hand – vom Ankauf bis zur Finanzierung.</p>
+        <div class="grid service-grid">
+          <div class="card"><div class="card-content"><h3>Fahrzeugverkauf</h3><p>Ausgewählte Fahrzeuge mit geprüfter Historie und transparenter Dokumentation.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Fahrzeugankauf</h3><p>Wir bewerten Ihr Fahrzeug fair und erstellen kurzfristig ein Angebot.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Inzahlungnahme</h3><p>Nutzen Sie Ihr aktuelles Fahrzeug als Anzahlung für Ihr nächstes Modell.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Finanzierung & Beratung</h3><p>Individuelle Finanzierungslösungen und persönliche Beratung zu Laufzeiten und Raten.</p></div></div>
         </div>
       </div>
     </section>
@@ -377,6 +496,59 @@
         <div class="panel">
           <p style="margin:0 0 12px 0;">Stöbern Sie durch unser komplettes Angebot direkt auf mobile.de. Dort finden Sie alle Details, Preise und aktuelle Verfügbarkeiten.</p>
           <a class="btn primary" href="https://home.mobile.de/ACAUTOHANDELMANNHEIM#ses" target="_blank" rel="noopener">Hier geht es zu unseren Fahrzeugen auf mobile.de</a>
+        <div class="grid vehicle-grid">
+          <div class="card">
+            <div class="card-content">
+              <div class="vehicle-thumb">Bildplatzhalter</div>
+              <h3>SUV Sportline</h3>
+              <div class="vehicle-meta">SUV · Automatik · Navi</div>
+              <div class="price">€ 24.900*</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="vehicle-thumb">Bildplatzhalter</div>
+              <h3>Limousine Komfort</h3>
+              <div class="vehicle-meta">Limousine · Benzin · Assistenz</div>
+              <div class="price">€ 21.500*</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="vehicle-thumb">Bildplatzhalter</div>
+              <h3>Kompakt City</h3>
+              <div class="vehicle-meta">Kompakt · Automatik · LED</div>
+              <div class="price">€ 17.800*</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="vehicle-thumb">Bildplatzhalter</div>
+              <h3>Familien Van</h3>
+              <div class="vehicle-meta">Van · 7-Sitzer · Kamera</div>
+              <div class="price">€ 26.400*</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="vehicle-thumb">Bildplatzhalter</div>
+              <h3>Coupé Performance</h3>
+              <div class="vehicle-meta">Coupé · Sportpaket · Sound</div>
+              <div class="price">€ 32.900*</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <div class="vehicle-thumb">Bildplatzhalter</div>
+              <h3>Elektro Urban</h3>
+              <div class="vehicle-meta">Elektro · Schnellladen · 400 km WLTP</div>
+              <div class="price">€ 29.500*</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:24px; display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+          <a class="btn primary" href="https://home.mobile.de/ACAUTOHANDELMANNHEIM#ses" target="_blank" rel="noopener">Alle Fahrzeuge auf mobile.de ansehen</a>
+          <p class="notice">*Preise und Verfügbarkeit dienen als Platzhalter.</p>
         </div>
       </div>
     </section>
@@ -391,6 +563,13 @@
             <p class="notice">Telefon / WhatsApp: <a href="https://wa.me/491776170766" target="_blank" rel="noopener">+49 177 6170766</a></p>
             <a class="btn primary" href="https://wa.me/491776170766?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Fahrzeug" target="_blank" rel="noopener">Per WhatsApp anfragen</a>
             <p class="notice" style="margin-top:12px;">Wir antworten in der Regel am selben Werktag.</p>
+        <p class="section-intro">Schnellste Antwort über WhatsApp. Alternativ per E-Mail-Formular.</p>
+        <div class="contact-grid">
+          <div class="panel">
+            <h3>WhatsApp</h3>
+            <p class="notice">+49 177 6170766</p>
+            <a class="btn primary" href="https://wa.me/491776170766?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Fahrzeug" target="_blank" rel="noopener">Per WhatsApp anfragen</a>
+            <p class="notice" style="margin-top:12px;">Wir antworten werktags schnellstmöglich.</p>
           </div>
           <div class="panel">
             <h3>E-Mail</h3>
@@ -494,6 +673,7 @@
         <h3>Kontakt</h3>
         <p>Columbusstraße 101, 68309 Mannheim<br />
         Telefon / WhatsApp: <a href="tel:+491776170766">+49 177 6170766</a><br />
+        Telefon / WhatsApp: +49 177 6170766<br />
         E-Mail: <a href="mailto:info@acautohandelmannheim.de">info@acautohandelmannheim.de</a></p>
       </div>
     </div>
@@ -513,6 +693,9 @@
     const backgroundColor = "#F7F7F7";
     const textColor = "#1B1B1B";
     const buttonRadius = "10px";
+    const backgroundColor = "#0B0B0B";
+    const textColor = "#F5F5F5";
+    const buttonRadius = "14px";
     const maxWidth = "1120px";
     const font = "Inter, system-ui, Arial";
 

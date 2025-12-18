@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>ACAUTOHANDELMANNHEIM | Fahrzeuge, Ankauf & Service in Mannheim</title>
+  <meta name="description" content="ACAUTOHANDELMANNHEIM in Mannheim: Fahrzeuge, Ankauf, Inzahlungnahme und persönliche Beratung. Direkt erreichbar per WhatsApp oder Telefon." />
+  <meta property="og:title" content="ACAUTOHANDELMANNHEIM | Fahrzeuge. Ankauf. Service." />
+  <meta property="og:description" content="Ihr zuverlässiges Autohaus in Mannheim. Persönliche Beratung, klare Abläufe und geprüfte Fahrzeuge." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://acautohandelmannheim.example" />
+  <meta property="og:image" content="" />
+  <style>
+    :root {
+      --primary-color: #000000;
+      --accent-red: #d40000;
+      --accent-blue: #0057ff;
+      --background-color: #f7f7f7;
+      --surface: #ffffff;
+      --text-color: #1b1b1b;
+      --muted: #4a4a4a;
+      --border: #dcdcdc;
+      --button-radius: 10px;
+      --max-width: 1120px;
+      --font-family: "Inter", system-ui, Arial, sans-serif;
+    }
+
+    /* Design-Variablen als JS-konfigurierbare Konstanten */
+    /*
+      brandName = "ACAUTOHANDELMANNHEIM"
+      primaryColor = "#000000"
+      accentRed = "#D40000"
+      accentBlue = "#0057FF"
+      backgroundColor = "#F7F7F7"
+      textColor = "#1B1B1B"
+      buttonRadius = "10px"
+      maxWidth = "1120px"
+      font = "Inter, system-ui, Arial"
+    */
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background: var(--background-color);
+      color: var(--text-color);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    button, .btn { cursor: pointer; }
+
+    .layout { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-color);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .logo svg { height: 32px; width: auto; }
+    .nav-links { display: flex; gap: 14px; align-items: center; }
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      border-color: var(--accent-blue);
+      outline: none;
+    }
+    .nav .cta {
+      background: var(--accent-red);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: var(--button-radius);
+      font-weight: 700;
+      border: 1px solid var(--accent-red);
+    }
+
+    .hero {
+      padding: 64px 0 48px;
+      position: relative;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #eef2f9;
+      color: var(--accent-blue);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 12px;
+      border: 1px solid #d5e2ff;
+    }
+    h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      margin: 14px 0 10px;
+      letter-spacing: -0.02em;
+    }
+    .subtitle { color: var(--muted); max-width: 640px; font-size: 18px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .btn {
+      padding: 14px 18px;
+      border-radius: var(--button-radius);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text-color);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.15s ease;
+      text-align: center;
+    }
+    .btn.primary { background: var(--accent-red); color: #fff; border-color: var(--accent-red); }
+    .btn.secondary { border-color: var(--accent-blue); color: var(--accent-blue); background: #f5f8ff; }
+    .btn:hover, .btn:focus-visible { outline: 2px solid var(--accent-blue); }
+
+    .badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .badge {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: #f3f3f3;
+      border: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .section { padding: 70px 0; }
+    .section h2 { font-size: 28px; margin: 0 0 12px; }
+    .section p.section-intro { color: var(--muted); max-width: 640px; }
+    .soft-bg { background: #fafafa; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid { display: grid; gap: 20px; grid-template-columns: 1fr; align-items: start; }
+    .plain-list { padding-left: 18px; color: var(--text-color); }
+    .plain-list li { margin-bottom: 8px; }
+
+    .grid { display: grid; gap: 16px; }
+    .usp-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .service-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card h3 { margin: 0; font-size: 20px; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .vehicle-thumb {
+      width: 100%;
+      height: 150px;
+      border-radius: 12px;
+      background: #f1f1f1;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: #555;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .vehicle-meta { display: flex; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+    .price { font-weight: 800; font-size: 18px; color: var(--primary-color); }
+
+    .contact-grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+    .contact-grid .panel { height: 100%; }
+    .contact-panel h3 { margin-top: 0; }
+    .contact-list { list-style: none; padding: 0; margin: 12px 0; color: var(--text-color); }
+    .contact-list a { color: var(--accent-blue); font-weight: 700; }
+    .contact-list li { padding: 6px 0; border-bottom: 1px solid var(--border); }
+    .contact-list li:last-child { border-bottom: 0; }
+    .contact-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    form { display: grid; gap: 12px; }
+    label { font-weight: 700; font-size: 14px; }
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text-color);
+      font-size: 15px;
+    }
+    input:focus, textarea:focus { outline: 2px solid var(--accent-blue); }
+    textarea { min-height: 120px; resize: vertical; }
+    .checkbox { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--muted); }
+    .checkbox input { width: auto; margin-top: 2px; }
+
+    .notice { font-size: 14px; color: var(--muted); margin-top: 8px; }
+    .footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 26px 0;
+      color: var(--muted);
+    }
+    .footer-grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+    .legal { font-size: 14px; line-height: 1.5; }
+    .legal h3 { color: var(--text-color); margin-bottom: 8px; }
+
+    .cookie-banner {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(100% - 24px, 520px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: none;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 200;
+    }
+    .cookie-banner.show { display: flex; }
+    .cookie-text { font-size: 14px; color: var(--muted); }
+
+    @media (min-width: 820px) {
+      .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+      .about-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="layout nav">
+      <a class="logo" href="#top" aria-label="Zur Startseite">
+        <svg viewBox="0 0 220 50" role="img" aria-hidden="true">
+          <g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="var(--accent-blue)" d="M10 35 C35 8, 85 8, 110 35" />
+            <path stroke="var(--accent-red)" d="M110 35 C140 10, 200 10, 210 35" />
+          </g>
+          <text x="10" y="47" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="15" fill="var(--text-color)" letter-spacing="1.2">
+            ACAUTOHANDELMANNHEIM
+          </text>
+        </svg>
+        <span class="logo-text" data-brand>ACAUTOHANDELMANNHEIM</span>
+      </a>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#fahrzeuge">Fahrzeuge</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="cta" href="https://wa.me/491776170766?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Fahrzeug" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero layout" aria-labelledby="hero-heading">
+      <div class="hero-grid">
+        <div>
+          <div class="pill">Autohaus Mannheim</div>
+          <h1 id="hero-heading">Fahrzeuge. Ankauf. Service.</h1>
+          <p class="subtitle">Ihr zuverlässiges Autohaus in Mannheim. Persönliche Beratung, klare Abläufe und Fahrzeuge, die zu Ihren Anforderungen passen.</p>
+          <div class="hero-ctas">
+            <a class="btn primary" href="https://wa.me/491776170766?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Fahrzeug" target="_blank" rel="noopener">Per WhatsApp anfragen</a>
+            <a class="btn secondary" href="https://home.mobile.de/ACAUTOHANDELMANNHEIM#ses" target="_blank" rel="noopener">Zu unseren Fahrzeugen auf mobile.de</a>
+          </div>
+          <div class="badges">
+            <div class="badge">Columbusstraße 101, 68309 Mannheim</div>
+            <div class="badge">Telefon / WhatsApp: +49 177 6170766</div>
+          </div>
+        </div>
+        <div class="panel contact-panel" aria-label="Kontaktinformationen">
+          <h3>Direkt erreichbar</h3>
+          <ul class="contact-list">
+            <li><strong>Telefon / WhatsApp:</strong> <a href="https://wa.me/491776170766" target="_blank" rel="noopener">+49 177 6170766</a></li>
+            <li><strong>E-Mail:</strong> <a href="mailto:info@acautohandelmannheim.de">info@acautohandelmannheim.de</a></li>
+            <li><strong>Adresse:</strong> Columbusstraße 101, 68309 Mannheim</li>
+            <li><strong>Öffnungszeiten:</strong> Nach Vereinbarung</li>
+          </ul>
+          <div class="contact-actions">
+            <a class="btn primary" href="https://wa.me/491776170766" target="_blank" rel="noopener">WhatsApp öffnen</a>
+            <a class="btn secondary" href="#kontakt">Zum Kontaktformular</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-bg" id="usps" aria-labelledby="usps-heading">
+      <div class="layout">
+        <h2 id="usps-heading">Über uns & warum wir</h2>
+        <div class="about-grid">
+          <div>
+            <p class="section-intro">ACAUTOHANDELMANNHEIM steht für ehrliche Beratung, nachvollziehbare Angebote und Fahrzeuge, die sorgfältig geprüft werden. Wir begleiten Sie vom ersten Gespräch bis zur Übergabe persönlich.</p>
+            <ul class="plain-list">
+              <li>Feste Ansprechpartner und transparente Konditionen</li>
+              <li>Klare Fahrzeughistorie und nachvollziehbare Preise</li>
+              <li>Schnelle Rückmeldung per WhatsApp oder Telefon</li>
+            </ul>
+          </div>
+          <div class="grid usp-grid">
+            <div class="card"><div class="card-content"><h3>Faire Preise</h3><p>Marktgerechte Bewertungen und klare Angebote ohne versteckte Kosten.</p></div></div>
+            <div class="card"><div class="card-content"><h3>Geprüfte Fahrzeuge</h3><p>Aktuelle HU/AU, gepflegte Historie und Probefahrt nach Vereinbarung.</p></div></div>
+            <div class="card"><div class="card-content"><h3>Verlässliche Abwicklung</h3><p>Strukturierte Prozesse vom Ankauf bis zur Übergabe.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="leistungen" aria-labelledby="leistungen-heading">
+      <div class="layout">
+        <h2 id="leistungen-heading">Leistungen</h2>
+        <p class="section-intro">Klassischer Autohaus-Service in Mannheim – verlässlich, nachvollziehbar und persönlich.</p>
+        <div class="grid service-grid">
+          <div class="card"><div class="card-content"><h3>Fahrzeugverkauf</h3><p>Ausgewählte Fahrzeuge mit gepflegter Historie und klarer Dokumentation.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Fahrzeugankauf</h3><p>Faire Bewertung Ihres Fahrzeugs und zügige Angebotserstellung.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Inzahlungnahme</h3><p>Ihr jetziges Fahrzeug wird auf den Kaufpreis angerechnet – transparent und nachvollziehbar.</p></div></div>
+          <div class="card"><div class="card-content"><h3>Finanzierung & Beratung</h3><p>Persönliche Beratung zu Laufzeiten, Raten und Partnerbanken.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fahrzeuge" aria-labelledby="fahrzeuge-heading">
+      <div class="layout">
+        <h2 id="fahrzeuge-heading">Fahrzeuge & Angebote</h2>
+        <p class="section-intro">Alle aktuellen Fahrzeuge finden Sie vollständig auf mobile.de.</p>
+        <div class="panel">
+          <p style="margin:0 0 12px 0;">Stöbern Sie durch unser komplettes Angebot direkt auf mobile.de. Dort finden Sie alle Details, Preise und aktuelle Verfügbarkeiten.</p>
+          <a class="btn primary" href="https://home.mobile.de/ACAUTOHANDELMANNHEIM#ses" target="_blank" rel="noopener">Hier geht es zu unseren Fahrzeugen auf mobile.de</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt" aria-labelledby="kontakt-heading">
+      <div class="layout">
+        <h2 id="kontakt-heading">Kontakt aufnehmen</h2>
+        <p class="section-intro">Schnellste Antwort über WhatsApp. Alternativ per Telefon oder klassisch per E-Mail-Formular.</p>
+        <div class="contact-grid">
+          <div class="panel">
+            <h3>WhatsApp</h3>
+            <p class="notice">Telefon / WhatsApp: <a href="https://wa.me/491776170766" target="_blank" rel="noopener">+49 177 6170766</a></p>
+            <a class="btn primary" href="https://wa.me/491776170766?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Fahrzeug" target="_blank" rel="noopener">Per WhatsApp anfragen</a>
+            <p class="notice" style="margin-top:12px;">Wir antworten in der Regel am selben Werktag.</p>
+          </div>
+          <div class="panel">
+            <h3>E-Mail</h3>
+            <form id="contact-form" novalidate>
+              <div>
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" autocomplete="name" required />
+              </div>
+              <div>
+                <label for="email">E-Mail *</label>
+                <input type="email" id="email" name="email" autocomplete="email" required />
+              </div>
+              <div>
+                <label for="message">Nachricht *</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <label class="checkbox">
+                <input type="checkbox" id="privacy" required />
+                <span>Ich habe die Datenschutzerklärung gelesen.</span>
+              </label>
+              <button type="submit" class="btn primary">Nachricht senden</button>
+              <p class="notice">Versand via <code>mailto:</code>. Optional: Formspree oder Netlify-Formular einbinden.</p>
+            </form>
+          </div>
+          <div class="panel">
+            <h3>Angebotsanfrage Fahrzeugkauf</h3>
+            <form id="offer-form" novalidate>
+              <div>
+                <label for="offer-name">Name *</label>
+                <input type="text" id="offer-name" name="offer-name" required />
+              </div>
+              <div>
+                <label for="offer-email">E-Mail *</label>
+                <input type="email" id="offer-email" name="offer-email" required />
+              </div>
+              <div>
+                <label for="offer-phone">Telefon / WhatsApp (optional)</label>
+                <input type="tel" id="offer-phone" name="offer-phone" />
+              </div>
+              <div>
+                <label for="offer-model">Fahrzeugwunsch (Marke/Modell) *</label>
+                <input type="text" id="offer-model" name="offer-model" required />
+              </div>
+              <div>
+                <label for="offer-budget">Budget (optional)</label>
+                <input type="text" id="offer-budget" name="offer-budget" />
+              </div>
+              <div>
+                <label for="offer-notes">Nachricht / Ausstattung *</label>
+                <textarea id="offer-notes" name="offer-notes" required></textarea>
+              </div>
+              <label class="checkbox">
+                <input type="checkbox" id="offer-privacy" required />
+                <span>Ich habe die Datenschutzerklärung gelesen.</span>
+              </label>
+              <button type="submit" class="btn primary">Angebot anfragen</button>
+              <p class="notice">Versand via <code>mailto:</code>. Optional: Formspree oder Netlify-Formular einbinden.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recht" aria-labelledby="recht-heading">
+      <div class="layout">
+        <h2 id="recht-heading">Rechtliches</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+          <div class="card legal">
+            <div class="card-content">
+              <h3>Impressum (Platzhalter)</h3>
+              <p>Die rechtlich verbindlichen Inhalte werden vom Unternehmen bereitgestellt.</p>
+              <p>Unternehmensangaben · Vertretungsberechtigte · Kontakt · Register / USt-ID.</p>
+            </div>
+          </div>
+          <div class="card legal">
+            <div class="card-content">
+              <h3>Datenschutzerklärung (Platzhalter)</h3>
+              <p>Bitte fügen Sie hier Ihre Datenschutzerklärung gemäß DSGVO ein.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="layout footer-grid">
+      <div class="logo" aria-label="Logo Fußbereich">
+        <svg viewBox="0 0 220 50" role="img" aria-hidden="true">
+          <g fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="var(--accent-blue)" d="M10 35 C35 8, 85 8, 110 35" />
+            <path stroke="var(--accent-red)" d="M110 35 C140 10, 200 10, 210 35" />
+          </g>
+          <text x="10" y="47" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="15" fill="var(--text-color)" letter-spacing="1.2">
+            ACAUTOHANDELMANNHEIM
+          </text>
+        </svg>
+        <span class="logo-text" data-brand>ACAUTOHANDELMANNHEIM</span>
+      </div>
+      <div class="legal">
+        <h3>Kontakt</h3>
+        <p>Columbusstraße 101, 68309 Mannheim<br />
+        Telefon / WhatsApp: <a href="tel:+491776170766">+49 177 6170766</a><br />
+        E-Mail: <a href="mailto:info@acautohandelmannheim.de">info@acautohandelmannheim.de</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie Hinweis">
+    <span class="cookie-text">Diese Website verwendet ausschließlich technisch notwendige Cookies.</span>
+    <button class="btn secondary" id="cookie-accept">OK</button>
+  </div>
+
+  <script>
+    // Branding-Variablen
+    const brandName = "ACAUTOHANDELMANNHEIM";
+    const primaryColor = "#000000";
+    const accentRed = "#D40000";
+    const accentBlue = "#0057FF";
+    const backgroundColor = "#F7F7F7";
+    const textColor = "#1B1B1B";
+    const buttonRadius = "10px";
+    const maxWidth = "1120px";
+    const font = "Inter, system-ui, Arial";
+
+    const cssVars = {
+      "--primary-color": primaryColor,
+      "--accent-red": accentRed,
+      "--accent-blue": accentBlue,
+      "--background-color": backgroundColor,
+      "--text-color": textColor,
+      "--button-radius": buttonRadius,
+      "--max-width": maxWidth,
+      "--font-family": font
+    };
+    Object.entries(cssVars).forEach(([key, value]) => document.documentElement.style.setProperty(key, value));
+    document.querySelectorAll('[data-brand]').forEach((el) => { el.textContent = brandName; });
+
+    // Kontaktformular: Clientseitige Validierung + mailto
+    const form = document.getElementById('contact-form');
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const mailto = `mailto:info@acautohandelmannheim.de?subject=${encodeURIComponent('Anfrage über ' + brandName)}&body=${encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\nNachricht: ${message}`)}`;
+      window.location.href = mailto;
+    });
+
+    const offerForm = document.getElementById('offer-form');
+    offerForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!offerForm.reportValidity()) return;
+      const name = document.getElementById('offer-name').value.trim();
+      const email = document.getElementById('offer-email').value.trim();
+      const phone = document.getElementById('offer-phone').value.trim();
+      const model = document.getElementById('offer-model').value.trim();
+      const budget = document.getElementById('offer-budget').value.trim();
+      const notes = document.getElementById('offer-notes').value.trim();
+      const body = [
+        `Name: ${name}`,
+        `E-Mail: ${email}`,
+        phone ? `Telefon: ${phone}` : '',
+        `Fahrzeugwunsch: ${model}`,
+        budget ? `Budget: ${budget}` : '',
+        `Nachricht/Ausstattung: ${notes}`
+      ].filter(Boolean).join('\\n');
+      const mailto = `mailto:info@acautohandelmannheim.de?subject=${encodeURIComponent('Angebotsanfrage Fahrzeugkauf')}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    });
+
+    // Cookie Banner (nur technisch notwendige Cookies)
+    const cookieBanner = document.querySelector('.cookie-banner');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const consentKey = 'acautohandel-consent';
+    const showBanner = () => {
+      if (localStorage.getItem(consentKey) !== 'accepted') {
+        cookieBanner?.classList.add('show');
+      }
+    };
+    acceptBtn?.addEventListener('click', () => {
+      localStorage.setItem(consentKey, 'accepted');
+      cookieBanner?.classList.remove('show');
+    });
+    showBanner();
+  </script>
+</body>
+</html>
